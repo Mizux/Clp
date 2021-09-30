@@ -2608,7 +2608,7 @@ transposeTimes2ScaledBit(clpTempInfo &info)
   info.numberAdded = numberNonZero;
 }
 #endif
-/* Updates two arrays for steepest and does devex weights 
+/* Updates two arrays for steepest and does devex weights
    Returns nonzero if updates reduced cost and infeas -
    new infeas in dj1 */
 // Updates two arrays for steepest
@@ -4325,7 +4325,7 @@ int ClpPackedMatrix::scale(ClpModel *model, ClpSimplex *simplex) const
 #if 0
 	  for (iColumn = 0; iColumn < numberColumns; iColumn++) {
 	    if (columnUpper[iColumn] >
-		columnLower[iColumn] + 1.0e-12 && columnLength[iColumn]) 
+		columnLower[iColumn] + 1.0e-12 && columnLength[iColumn])
 	      assert(usefulColumn[iColumn]!=0);
 	    else
 	      assert(usefulColumn[iColumn]==0);
@@ -8977,7 +8977,7 @@ ClpSimplexDual::dualColumn0(const CoinIndexedVector * rowArray,
 	  which = columnArray->getIndices();
 	  reducedCost = reducedCostWork_;
 	  unsigned char * statusArray = status_;
-	  
+
 	  clpTempInfo info[ABOCA_LITE];
 	  int chunk = (number+numberThreads-1)/numberThreads;
 	  int n=0;
