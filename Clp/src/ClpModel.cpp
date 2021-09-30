@@ -1394,6 +1394,18 @@ void ClpModel::synchronizeMatrix()
     matrix_->setDimensions(numberRows,numberColumns);
   }
 }
+
+// Makes sure matrix dimensions are at least model dimensions
+void ClpModel::synchronizeMatrix(int newNumberRows, int newNumberColumns)
+{
+  if (matrix_) {
+    int numberRows = CoinMax(newNumberRows, matrix_->getNumRows());
+    int numberColumns = CoinMax(newNumberColumns, matrix_->getNumCols());
+    matrix_->setDimensions(numberRows,numberColumns);
+  }
+}
+
+
 // Deletes rows
 void ClpModel::deleteRows(int number, const int *which)
 {
@@ -2083,7 +2095,7 @@ int ClpModel::addRows(const CoinBuild &buildObject, bool tryPlusMinusOne, bool c
     delete[] lower;
     delete[] upper;
     // make sure matrix correct size
-    matrix_->setDimensions(numberRows_, numberColumns_);
+    synchronizeMatrix(numberRows_, numberColumns_);
   }
   synchronizeMatrix();
   return numberErrors;

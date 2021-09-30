@@ -143,6 +143,7 @@ public:
 private:
   /// Makes sure matrix dimensions are at least model dimensions
   void synchronizeMatrix();
+  void synchronizeMatrix(int newNumberRows, int newNumberColumns);
 public:
   /// Deletes rows
   void deleteRows(int number, const int *which);
