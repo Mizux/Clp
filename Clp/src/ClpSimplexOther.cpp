@@ -2360,9 +2360,13 @@ int ClpSimplexOther::parametrics(const char *dataFile)
   if (intervalTheta >= endTheta)
     intervalTheta = 0.0;
   if (!good) {
-    snprintf(line, sizeof(line), "Odd first line %s on file %s?", line, dataFile);
+    // POSIX standard forbids strings to overlap. 
+    // Even following code is UB, despite it works most of a time:
+    // sprintf(buf, "%s some further text", buf);
+    char[300] line2;
+    snprintf(line2, sizeof(line2), "Odd first line %s on file %s?", line, dataFile);
     handler_->message(CLP_GENERAL, messages_)
-      << line << CoinMessageEol;
+      << line2 << CoinMessageEol;
     fclose(fp);
     return -2;
   }
