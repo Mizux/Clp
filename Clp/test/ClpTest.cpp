@@ -5,7 +5,6 @@
 #include "CoinModel.hpp"
 #include "CoinTime.hpp"
 #include <ClpConfig.h>
-#include <ClpConfig.h>
 #include <CoinUtilsConfig.h>
 #include <OsiConfig.h>
 #include <iostream>
