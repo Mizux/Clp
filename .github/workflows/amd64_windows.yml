@@ -28,8 +28,8 @@ jobs:
           git clone -b stable/2.11 --depth=1 https://github.com/Mizux/CoinUtils.git
           && cd CoinUtils
           && cmake -S. -Bbuild
-          && cmake --build build --config Release
-          && cmake --build build --config Release --target install
+          && cmake --build build --config ${{ matrix.cmake.config }}
+          && cmake --build build --config ${{ matrix.cmake.config }} --target install
           && cd ..
           && Remove-Item CoinUtils -Recurse -Include *.*
       - name: Install Osi
@@ -37,8 +37,8 @@ jobs:
           git clone -b stable/0.108 --depth=1 https://github.com/Mizux/Osi.git
           && cd Osi
           && cmake -S. -Bbuild
-          && cmake --build build --config Release
-          && cmake --build build --config Release --target install
+          && cmake --build build --config ${{ matrix.cmake.config }}
+          && cmake --build build --config ${{ matrix.cmake.config }} --target install
           && cd ..
           && Remove-Item Osi -Recurse -Include *.*
       - name: Configure
